@@ -1,0 +1,185 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.image {
+    width: 100%;
+    display: block;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: red;
+}
+.Toastify__toast--success {
+    border: 1px solid #fff !important;
+    border-radius: 50px !important;
+    background: #000 !important;
+    color: #fff;
+    @media all and (max-width: 480px) {
+        width: 30% !important;
+    }
+}
+
+.Toastify__toast-body {
+    color: #fff;
+    font-weight: 400;
+    margin-left: 25px !important;
+}
+.Toastify__toast > button > svg {
+    display: none;
+}
+
+.slick-prev {
+    left: 3% !important;
+    z-index: 10000000000000000;
+}
+.slick-prev:before {
+    left: 40px !important;
+}
+
+.slick-next {
+    right: 3% !important;
+    z-index: 1;
+    color: #000 !important;
+}
+div.right {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    letter-spacing: 0.2em;
+}
+
+div.right p {
+    font-size: 19px;
+    font-weight: 900;
+}
+
+div.right p.company {
+    color: hsl(26, 100%, 55%);
+    font-size: 15px;
+    font-weight: 900;
+}
+
+div.right div.prices {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 170px;
+    height: 60px;
+}
+
+div.right div.prices h1.new {
+    width: 70%;
+    font-size: 25px;
+    font-weight: 900;
+    margin-bottom: 0px;
+}
+
+div.right div.prices span {
+    width: 30%;
+    height: 20px;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: hsl(26, 100%, 55%);
+    background: hsl(25, 100%, 94%);
+    border-radius: 5px;
+}
+
+div.right div.prices h3.old {
+    width: 40%;
+    text-decoration: line-through;
+    color: hsl(220, 14%, 75%);
+    font-size: 16px;
+}
+
+div.right div.cart-items {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+}
+
+div.right div.cart-items div.left {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    height: 100%;
+    width: 150px;
+    background: hsl(223, 64%, 98%);
+    border-radius: 10px;
+    margin-right: 50px;
+}
+
+div.right div.cart-items div.left div.operator {
+    width: 40px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: hsl(26, 100%, 55%);
+    font-size: 25px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+div.right div.cart-items div.left h5 {
+    width: 40px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+}
+
+div.right div.cart-items div.right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    background: hsl(26, 100%, 55%);
+    width: 179px;
+    height: 100%;
+    border-radius: 10px;
+}
+
+div.right div.cart-items div.right a {
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+    align-items: center;
+}
+
+.bottom-nav-item.active {
+    background-color: #fff !important;
+    color: #000 !important;
+}
+
+.react-tel-input .form-control {
+    height: 48px !important;
+    width: 292px !important;
+}
+
+.bottom-nav {
+    height: 50px !important;
+}
+
+.swiper-button-prev {
+    color: #fff !important;
+}
+.swiper-button-next {
+    color: #fff !important;
+}
