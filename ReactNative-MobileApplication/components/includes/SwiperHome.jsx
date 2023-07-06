@@ -1,21 +1,13 @@
 import {
     View,
-    Text,
     StyleSheet,
-    Dimensions,
     Image,
-    ImageBackground,
-    Pressable,
 } from "react-native";
 import React, { useRef } from "react";
 import Swiper from "react-native-swiper";
-import { useNavigation } from "@react-navigation/native";
-const { width } = Dimensions.get("window");
-const { height } = Dimensions.get("window");
 
 export default function SwiperHome() {
     const swiperRef = useRef(null);
-
     return (
         <Swiper
             ref={swiperRef}
@@ -89,9 +81,7 @@ const styles = StyleSheet.create({
         padding: 0,
     },
     mainImageContainer: {},
-
     imageContainer: {},
-
     dot: {
         width: 20,
         backgroundColor: "#fff",

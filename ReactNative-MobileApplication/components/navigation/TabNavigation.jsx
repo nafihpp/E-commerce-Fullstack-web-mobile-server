@@ -47,12 +47,14 @@ export default function TabNavigation() {
                             </Text>
                         );
                     },
+                    headerShown: false
                 }}
             />
             <Tab.Screen
                 name="Categories"
                 component={OnBoard}
                 options={{
+                    headerShown: false,
                     tabBarIcon: ({ focused, size }) => (
                         <Icon
                             name="appstore-o"
@@ -78,6 +80,7 @@ export default function TabNavigation() {
                 name="Account"
                 component={Cart}
                 options={{
+                    headerShown: false,
                     tabBarIcon: ({ focused, size }) => (
                         <>
                             <Icon
@@ -130,6 +133,7 @@ export default function TabNavigation() {
                 name="account"
                 component={Account}
                 options={{
+                    headerShown: false,
                     tabBarIcon: ({ focused, size }) => (
                         <Icon
                             name="user"

@@ -9,12 +9,11 @@ import {
     Alert,
 } from "react-native";
 import React, { Fragment, useEffect, useState } from "react";
-import { useNavigation } from "@react-navigation/native";
 import SwiperHome from "../includes/SwiperHome";
+import { ProductCard } from "../includes/ProductCard";
 const { height } = Dimensions.get("window");
 
 export default function Homepage() {
-    const navigation = useNavigation();
     const DATA = [
         {
             id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
@@ -79,38 +78,6 @@ export default function Homepage() {
         </View>
     );
 
-    const ProductItem = ({ title, image }) => (
-        <View
-            style={[
-                {
-                    marginBottom: 50,
-                    width: 100,
-                    marginRight: 40,
-                    borderColor: "black",
-                    borderWidth: "50",
-                },
-            ]}
-        >
-            <View style={{ alignItems: "center" }}>
-                <Image
-                    source={{
-                        uri: image,
-                    }}
-                    style={{ width: 60, height: 60, objectFit: "contain" }}
-                />
-            </View>
-            <Text
-                style={{
-                    textAlign: "center",
-                    color: "#000",
-                    fontWeight: 600,
-                }}
-            >
-                {title}
-            </Text>
-        </View>
-    );
-
     const [products, setProducts] = useState([]);
     useEffect(() => {
         const fetchit = async () => {
@@ -138,11 +105,11 @@ export default function Homepage() {
                 <View style={{ width: window.width, height: 100 }}>
                     <SwiperHome />
                 </View>
-                <View style={{ width: window.width, height: 400 }}>
+                <View style={{ width: window.width }}>
                     <FlatList
                         data={products}
                         renderItem={({ item }) => (
-                            <ProductItem
+                            <ProductCard
                                 title={item.title}
                                 image={item.image}
                             />

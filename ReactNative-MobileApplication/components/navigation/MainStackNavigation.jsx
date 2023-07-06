@@ -1,71 +1,46 @@
-import React, { Fragment, useEffect, useState } from "react";
-import Homepage from "../screens/Homepage";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { NavigationContainer, useNavigation } from "@react-navigation/native";
-import Accordion from "../screens/Cart";
-import OnBoarding from "../screens/OnBoarding";
+import { NavigationContainer } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import Signup from "../screens/Signup";
-import Login from "../screens/Login";
 import TabNavigation from "./TabNavigation";
+import NewUserStack from "./NewUserStack";
+import AuthStack from "./AuthStack";
 
 const Stack = createStackNavigator();
 
 export default function MainStackNavigation() {
-    const [firstTimeUser, setFirstTimeUser] = useState();
-    const [authenticated, setAuthenticated] = useState(false);
+    const [firstTimeUser, setFirstTimeUser] = useState(true);
+    const [authenticated, setAuthenticated] = useState(true);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         checkFirstTimeUser();
     }, []);
 
     async function checkFirstTimeUser() {
-        await AsyncStorage.clear();
-        const result = await AsyncStorage.getItem("firstTimeUser");
-        if (result === null) {
-            setFirstTimeUser(true);
-            AsyncStorage.setItem("firstTimeUser", "false");
-        } else {
-            setFirstTimeUser(false);
+        try {
+            const result = await AsyncStorage.getItem("firstTimeUser");
+            if (result !== null) {
+                setFirstTimeUser(false);
+            } else {
+                setFirstTimeUser(true);
+                await AsyncStorage.setItem("firstTimeUser", JSON.stringify(false));
+            }
+            console.warn(result, '==result');
+        } catch (error) {
+            console.error(error);
         }
     }
-    console.log(firstTimeUser, "==firstTimeUser");
+
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="onBoard">
-                {firstTimeUser && (
-                    <Stack.Screen
-                        name="LoggedHomepage"
-                        component={TabNavigation}
-                        options={{
-                            headerShown: false,
-                        }}
-                    />
-                )}
-                {!firstTimeUser && !authenticated && (
-                    <Fragment>
-                        <Stack.Screen
-                            name="Signup"
-                            component={Signup}
-                            options={{ headerShown: false }}
-                        />
-                        <Stack.Screen
-                            name="Login"
-                            component={Login}
-                            options={{ headerShown: false }}
-                        />
-                    </Fragment>
-                )}
-                {authenticated && (
-                    <Stack.Screen
-                        name="onBoard"
-                        component={OnBoarding}
-                        options={{
-                            headerShown: false,
-                        }}
-                    />
-                )}
+            <Stack.Navigator>
+                {firstTimeUser &&             
+                <Stack.Screen name="Newuser" component={NewUserStack}  /> }
+                {!authenticated &&             
+                <Stack.Screen name="Auth" component={AuthStack}  /> }
+                {authenticated &&
+                   <Stack.Screen name="Homescreen" component={TabNavigation}  options={{ headerShown: false }} /> }
             </Stack.Navigator>
         </NavigationContainer>
-    );
+    );r
 }
